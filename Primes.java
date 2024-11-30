@@ -7,6 +7,7 @@ public class Primes {
             prime[i] = true;
         }
         prime = primeArr(prime);
+        System.out.println("Prime numbers up to " + prime.length + ":");
         printArr(prime);
         int count = 0;
         for (int i=0; i<prime.length; i++) //count
@@ -54,3 +55,6 @@ public class Primes {
         }
     }
 }
+
+
+
