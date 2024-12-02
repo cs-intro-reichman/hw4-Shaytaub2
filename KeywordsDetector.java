@@ -27,18 +27,20 @@ public class KeywordsDetector {
         {
             keywords [i] = lowerCase(keywords[i]);
         }
-        String [] newSentences = sentences;
+       
+        String [] newSentences = new String[sentences.length];
         for (int i=0; i<newSentences.length; i++) // lowerCase to all sentsnces
         {
-            newSentences [i] = lowerCase(newSentences[i]);
+            newSentences [i] = sentences [i];
+            sentences [i] = lowerCase(newSentences[i]);
         }
         for (int i=0; i<newSentences.length; i++)
         {
             for (int j=0; j<keywords.length; j++)
             {
-            if (contains(newSentences [i], keywords [j]))
+            if (contains(sentences [i], keywords [j]))
                 {
-                    System.out.println(sentences[i]);
+                    System.out.println(newSentences[i]);
                 }   
             }
         }
