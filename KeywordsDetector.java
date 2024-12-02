@@ -1,3 +1,4 @@
+import java.util.Arrays;
 public class KeywordsDetector {
     public static void main(String[] args) {
         String[] sentences = {
@@ -20,7 +21,76 @@ public class KeywordsDetector {
 
     // Iterates through all the sentences.
     // If a sentence contains one or more of the kewords, prints it.
-    public static void detectAndPrint(String[] sentences, String[] keywords) {
-        // Replace this comment with your code
+    public static void detectAndPrint(String[] sentences, String[] keywords) 
+    {   
+        for (int i=0; i<keywords.length; i++) // lowerCase to all keyWords
+        {
+            keywords [i] = lowerCase(keywords[i]);
+        }
+        String [] newSentences = sentences;
+        for (int i=0; i<newSentences.length; i++) // lowerCase to all sentsnces
+        {
+            newSentences [i] = lowerCase(newSentences[i]);
+        }
+        for (int i=0; i<newSentences.length; i++)
+        {
+            for (int j=0; j<keywords.length; j++)
+            {
+            if (contains(newSentences [i], keywords [j]))
+                {
+                    System.out.println(sentences[i]);
+                }   
+            }
+        }
+
+        /*
+        for (int i=0; i<sentences.length; i++) // בדיקה של כל משפט בנפרד
+        {
+            String sentenc = sentences[i].toLowerCase(); // אותיות קטנות למשפט שנבדק
+            String [] wordsInSentenc = wordToSentence(sentenc); // שומר את המשפט באותיות קטנות בסטרינג חדש
+            for (int j=0; j<wordsInSentenc.length; j++)
+            {
+
+            }              
+        }
+        */
+    }
+
+    public static String lowerCase(String str) {
+        String lowString ="";
+        for (int i=0; i<str.length(); i++)
+        {
+            char c = str.charAt(i);
+            if (c>='A' && c<='Z')
+            {
+                lowString =lowString + (char)(c +('a' - 'A'));
+            }
+            else
+            {
+                lowString =lowString + str.charAt(i);
+            }
+        }
+        return lowString;
+    }  
+
+    public static boolean contains (String str1, String str2) {
+        
+        for (int i = 0; i <= str1.length() - str2.length(); i++) 
+        {
+            boolean found = true;
+            for (int j = 0; j < str2.length(); j++) 
+            {
+                if (str1.charAt(i + j) != str2.charAt(j)) 
+                {
+                    found = false;
+                    break;
+                }
+            }
+            if (found) 
+            {
+                return true;
+            }
+        }
+        return false;   
     }
 }
